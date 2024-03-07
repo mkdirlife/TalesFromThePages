@@ -97,13 +97,10 @@ sequenceDiagram
         </tr>
         <tr>
             <td width="70%">
-                <img src="README%20image/orm_project.jpg">
             </td>
             <td>
                 <ul>
-                    <li>필요 정보 입력 후</li>
-                    <li>글 생성 버튼 클릭</li>
-                    <li>하단에 짧은 글 추천</li>
+                    <li></li>
                 </ul>
             </td>
         </tr>
