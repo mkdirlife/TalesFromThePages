@@ -1,17 +1,18 @@
 
-# 이야기 추천 페이지 with ChatGPT
-이야기 추천 페이지 with ChatGPT
+# Tales From The Pages 책 추천 블로그
+Tales From The Pages 책 추천 블로그
 
 * 목표
-    * ChatGPT API 통해서 간단한 이야기 추천서비스 제공
+    * 기본적인 블로그 기능 구현
+    * 책 추천 블로그를 위해 별점 시스템 과 공유 기능 구현
 
 * 사용방법
-    1. https://mkdirlife.github.io/shortStoryRecommand 로 접속해주세요.
-    2. input에 질문에 맞는 답을 입력하고, 버튼을 눌러주세요.
+    1. https://mkdirlife.github.io/TalesFromThePages 로 접속해주세요.
+    2. 읽고 싶은 Post를 선택해서 읽고, 댓글 을 달아주세요.
 
 * 서비스 URL 정보
-    * 실행 URL: https://mkdirlife.github.io/shortStoryRecommand
-    * blog github repo: https://github.com/mkdirlife/shortStoryRecommand
+    * 실행 URL: https://mkdirlife.github.io/TalesFromThePages
+    * blog github repo: https://github.com/mkdirlife/TalesFromThePages
 
 * 개발환경
    * 개발툴 : VSCode
