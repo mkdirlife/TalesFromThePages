@@ -55,18 +55,20 @@ HTML_CSS project
 * WBS
 ```mermaid
 gantt
-    title 이야기 추천 페이지 with ChatGPT
+    title TalesFromThePages 도서추천 블로그
     dateFormat  YYYY-MM-DD
     section 계획
-    프로젝트 범위 정의        :    des1, 2024-02-13, 1d
+    프로젝트 범위 정의        :    des1, 2024-03-07, 1d
     section 설계
-    와이어프레임 작성         :    des2, after des1, 12h
+    와이어프레임 작성         :    des2, 2024-03-08, 1d
     section 개발
-    기능 개발                :     dev1, after des2, 1d
+    기능 개발                :     dev1, after des1, 3d
+    디자인                :        dev2, 2024-03-10, 2d
     section 테스트
-    테스트                  :     tes1, after dev1, 6h
+    테스트                  :     tes1, 2024-03-09, 3d
+    최종테스트              :     tes2, 2024-03-12, 12h
     section 배포
-    배포 준비               :     dep1, after tes1, 6h
+    배포 준비               :     dep1, after tes2, 12h
 ```
 
 * 시퀀스 다이어그램
