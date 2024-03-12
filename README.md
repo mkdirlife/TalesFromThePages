@@ -3,8 +3,9 @@
 Tales From The Pages 책 추천 블로그
 
 * 목표
-    * 기본적인 블로그 기능 구현
-    * 책 추천 블로그를 위해 별점 시스템 과 공유 기능 구현
+    * CRUD 기본적인 블로그 기능 구현
+    * 댓글, 대댓글 구현
+    * 카테고리 구현
 
 * 사용방법
     1. https://mkdirlife.github.io/TalesFromThePages 로 접속해주세요.
@@ -71,13 +72,27 @@ gantt
         </tr>
         <tr>
             <td width="70%">
-            </td>
+               <img src="README%20img/[Blog 프로젝트]blog_list.jpg">
+            </td>     
             <td>
                 <ul>
-                    <li></li>
+                    <li>로그인, 로그아웃 구현</li>
+                    <li>검색 기능 구현</li>
                 </ul>
             </td>
         </tr>
+        <tr>
+            <td width="70%">
+               <img src="README%20img/[Blog 프로젝트]blog_detail.jpg">
+            </td>              
+            <td>
+                <ul>
+                    <li>카테고리 구현</li>
+                    <li>댓글, 대댓글 구현</li>
+                    <li>tag 조회 구현</li>                   
+                </ul>
+            </td>
+        </tr>       
     </table>
 
 * 애러와 애러 해결(트러블슈팅 히스토리)
