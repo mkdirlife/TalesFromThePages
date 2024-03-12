@@ -60,9 +60,15 @@ gantt
    5. 글 작성 시 별점 부여 하는 방법 고려 제목에 포함되서 보이도록 할 예정.
 
 
+
 * 시퀀스 다이어그램
-```mermaid
-```
+    <table>
+        <tr>
+           <img src="README%20img/ERD.png">
+        </tr>
+    </table>
+
+
 
 * 화면 정의서
     <table>
