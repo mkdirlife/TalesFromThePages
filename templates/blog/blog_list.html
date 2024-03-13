@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+  <section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex">
+          {% for post in posts %}
+          <div class="col-md-3 ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="{% url 'blog:blog_detail' post.pk %}" class="block-20" style="background-image: url({{post.thumb_image.url}});">
+              </a>
+
+              <div class="text mt-3 d-block">
+                <h3 class="heading mt-3"><a href="{% url 'blog:blog_detail' post.pk %}">{{ post.title|truncatechars:14 }}</a></h3>
+                <div class="meta mb-3">
+                  <div>
+                    <a href="#"><span class="mr-3">{{ post.created_at|date:"Y-m-d H:i" }}</span> 조회수: {{ post.view_count }}</a><br>
+                    <a href="{% url 'blog:blog_author' post.author.username %}">{{ post.author }}</a>
+                    <a href="{% url 'blog:blog_detail' post.pk %}" class="meta-chat"><span class="icon-chat"></span>{{ post.comments.count }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <form action="" method="GET">
+                <input type="text" name="q" value="{{ request.GET.q }}">
+                <input type="submit" value="검색">
+              </form>
+              <a href="{% url 'blog:blog_create' %}">업로드</a>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                {% if page_obj.has_previous %}
+                  <li><a href="?page=1">&laquo;</a></li>
+                  <li><a href="?page={{ posts.previous_page_number }}">&lt;</a></li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                  {% if page_obj.number == num %}
+                    <li class="active"><span>{{ num }}</span></li>
+                  {% else %}
+                    <li><a href="?page={{ num }}">{{ num }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ posts.next_page_number }}">&gt;</a></li>
+                  <li><a href="?page={{ posts.paginator.num_pages }}">&raquo;</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </section>
+    {% endblock %}

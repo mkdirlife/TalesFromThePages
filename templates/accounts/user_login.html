@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+    <section class="ftco-section contact-section bg-light">
+      <div class="container justify-content-center">
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-12 mb-4">
+              <h2 class="h3">로그인</h2>
+            </div>
+            <div class="w-100"></div>
+        </div>
+          <div class="col-md-12 order-md-last d-flex justify-content-center">
+            <form action="{% url 'accounts:user_login' %}" method="post" enctype="multipart/form-data" class="bg-white p-12 form">
+                {% csrf_token %}                       
+              <div class="form-group">
+                <input type="text" class="form-control" id="username_id" name='username' placeholder="Your ID" autocomplete="username">
+              </div>           
+              {{ form.username.errors }}                     
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" id="password_id1" placeholder="Password" autocomplete="new-password">
+              </div>
+              {{ form.password.errors }} 
+              <div class="form-group text-center">
+                <input type="submit" value="로그인" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+      </div>
+    </section>  
+    {% endblock %}
+
+<!--
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <button type="submit">로그인</button>
+</form>
+--> 

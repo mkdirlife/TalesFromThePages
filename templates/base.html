@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Tales From The Pages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+    <!-- TinyMCE Script -->
+    <!--<script src="https://cdn.tiny.cloud/1/yt6ihxd96vsd8m031qua1w1kchaehlbqwsvcthq2y72d30sx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'blog:blog_list' %}">Home</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="{% url 'blog:blog_list' %}" class="nav-link">블로그목록</a></li>
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a href="{% url 'blog:blog_create' %}" class="nav-link">글쓰기</a></li>
+            <li class="nav-item"><a href="{% url 'accounts:profile' %}" class="nav-link">프로필</a></li>          
+            <li class="nav-item"><a href="{% url 'accounts:user_logout' %}" class="nav-link" id="logout-link">로그아웃</a></li> 
+            <form id="logout-form" action="{% url 'accounts:user_logout' %}" method="post" style="display: none;">
+              {% csrf_token %}
+              <input type="submit" value="로그아웃">
+            </form>                   
+            {% else %}
+            <li class="nav-item"><a href="{% url 'accounts:user_login' %}" class="nav-link">로그인</a></li>
+            <li class="nav-item"><a href="{% url 'accounts:user_signup' %}" class="nav-link">회원가입</a></li>
+            {% endif %}    
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <h1 class="mb-4 bread">Tales From The Pages</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% block contents %}
+    {% endblock %}    
+    
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Blog 소개</h2>
+              <p>Tales From The Pages은 다양한 책에 대한 이야기를 올리고, 서로 의견을 나눌 수 있는 공간입니다.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="{% url 'blog:blog_list' %}" class="py-2 d-block">Blog</a></li>
+                <li><a href="http://paullab.co.kr" target="_blank" class="py-2 d-block">위니브</a></li>
+                <li><a href="https://archive.weniv.co.kr/" target="_blank" class="py-2 d-block">위니브 아카이브</a></li>
+                <li><a href="https://100.pyalgo.co.kr/" target="_blank" class="py-2 d-block">pyalgo</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                {% if user.is_authenticated %}
+                    <li class="py-2 d-block"><a href="{% url 'blog:blog_create' %}">글쓰기</a></li>
+                    <li class="py-2 d-block"><a href="{% url 'accounts:profile' %}">프로필</a></li>
+                    <li class="py-2 d-block"><a href="{% url 'accounts:user_logout' %}">로그아웃</a></li>                    
+                {% else %}
+                    <li class="py-2 d-block"><a href="{% url 'accounts:user_login' %}">로그인</a></li>
+                    <li class="py-2 d-block"><a href="{% url 'accounts:user_signup' %}">회원가입</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203. Halla Mountain, Jeju city, Jeju-do, Korea</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+82 010-1234-5678</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">mkdirlife@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<span id="current-year"></span> <a href="https://github.com/mkdirlife/TalesFromThePages" target="_blank">Mkdirlife All rights reserved.</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>-->
+  <script src="{% static 'js/main.js' %}"></script>
+  <!-- Custom TinyMCE Initialization Script -->
+  <script src="{% static 'django_tinymce/init_tinymce.js' %}"></script>    
+  </body>
+</html>

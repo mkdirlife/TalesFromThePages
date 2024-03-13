@@ -1,0 +1,39 @@
+{% load static %}
+<li class="comment">
+    <div class="vcard bio">
+      {% with profile=comment.author.profile %}
+        {% if profile %}
+          {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" alt="Image placeholder" class="img-fluid block-5">
+          {% else %}
+            <img src="{% static 'images/default_profile.png' %}" alt="Default Image" class="img-fluid  block-5">
+          {% endif %}
+        {% else %}
+          <img src="{% static 'images/default_profile.png' %}" alt="Default Image" class="img-fluid  block-5">
+        {% endif %}
+      {% endwith %}
+    </div>
+    <div class="comment-body">
+      <h6>{{ comment.author }} <small class="text-muted">{{ comment.created_at|date:"Y-m-d H:i" }}</small></h6>
+      {% if comment.is_deleted %}
+        <p>댓글이 삭제되었습니다.</p>
+      {% else %}
+        <p>{{ comment.message }}</p>
+        <p>
+          <a href="#commentForm" class="reply" onclick="setParentId({{ comment.pk }})">Reply</a>
+          {% if request.user == comment.author %}
+            <a href="{% url 'blog:comment_delete' comment.pk %}" class="reply">댓글삭제</a>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+    {% with replies=comment.replies.all %}
+    {% if replies %}
+      <ul class="children">
+        {% for reply in replies %}
+          {% include '_comment.html' with comment=reply %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+</li>

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+<form action="{% if form.instance.pk %}
+                {% url 'blog:blog_update' form.instance.pk %}
+              {% else %}
+                {% url 'blog:blog_create' %}
+              {% endif %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <section class="ftco-section">
+        <div class="container">
+            <!-- Title Field -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control {% if form.title.errors %}is-invalid{% endif %}" id="title" name="{{ form.title.name }}" value="{{ form.title.value|default_if_none:'' }}" required>
+                {% if form.title.errors %}
+                <div class="invalid-feedback">
+                    {{ form.title.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Thumb Image Field -->
+            <div class="mb-3">
+                <label for="thumb_image" class="form-label">Thumb Image</label>
+                {{ form.thumb_image }}
+                {% if form.thumb_image.errors %}
+                <div class="invalid-feedback">
+                    {{ form.thumb_image.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Content Field (assuming you want to use TinyMCE for this field) -->
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                {{ form.content }}
+                {% if form.content.errors %}
+                <div class="invalid-feedback">
+                    {{ form.content.errors }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Tag Field -->
+            <div class="mb-3">
+                <label for="tags" class="form-label">Tags</label>
+                <input type="text" class="form-control" id="tags" name="tags" value="{% if form.instance.pk %}{% with tags=form.instance.tags.all %}{% if tags %}{% for tag in tags %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endif %}{% endwith %}{% endif %}">
+            </div>
+
+            <!-- Category Field -->
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" name="category" class="form-select {% if form.category.errors %}is-invalid{% endif %}">
+                    <option value="">-- 카테고리 선택 --</option>
+                    {% for category in form.category.field.queryset %}
+                    <option value="{{ category.id }}" {% if category.id == form.category.value %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                {% if form.category.errors %}
+                <div class="invalid-feedback">
+                    {{ form.category.errors }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" value="{% if form.instance.pk %}
+                                          수정 완료
+                                        {% else %}
+                                          작성 완료
+                                        {% endif %}" class="btn btn-primary btn-lg py-3 px-5">
+        </div>
+    </section>
+</form>
+{% endblock %}

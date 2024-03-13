@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+    <section class="ftco-section contact-section bg-light">
+      <div class="container justify-content-center">
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-12 mb-4">
+              <h2 class="h3">회원가입</h2>
+            </div>
+            <div class="w-100"></div>
+        </div>
+          <div class="col-md-12 order-md-last d-flex justify-content-center">
+            <form action="{% url 'accounts:user_signup' %}" method="post" enctype="multipart/form-data" class="bg-white p-12 form">
+                {% csrf_token %}
+                <div class="form-group justify-content-center">
+                    <input type="file" name="photo" id="photo" class="form-control" onchange="previewFile()">
+                </div>
+                <div class="form-group">
+                    <label for="photo">프로필 사진</label>
+                    <div style="display: flex; justify-content: center;">
+                      <img src="" height="200" alt="Image preview..." style="display:none;text-align: center;" id="imagePreview">
+                    </div>
+                </div>                              
+              <div class="form-group">
+                <input type="text" class="form-control" id="username_id" name='username' placeholder="Your ID" autocomplete="username" required>
+              </div>           
+              {{ form.username.errors }}              
+              <div class="form-group">
+                <input type="email" class="form-control" id="email_id" name="email" placeholder="Your Email" autocomplete="email" required>
+              </div>
+              {{ form.email.errors }}              
+              <div class="form-group">
+                <input type="password" name="password1" class="form-control" id="password_id1" placeholder="Password" autocomplete="new-password" required>
+                </div>
+                {{ form.password1.errors }}                
+                <div class="form-group">
+                <input type="password" name="password2" class="form-control" id="password_id2" placeholder="Confirm Password" autocomplete="new-password" required>
+                </div>
+                {{ form.password2.errors }}
+              <div class="form-group">
+                <textarea type="text" name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+              </div>
+              {{ form.non_field_errors }}
+              <div class="form-group text-center">
+                <input type="submit" value="회원가입" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+      </div>
+    </section>  
+    {% endblock %}
