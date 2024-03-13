@@ -9,7 +9,8 @@ Tales From The Pages 책 추천 블로그
 
 * 사용방법
     1. https://mkdirlife.github.io/TalesFromThePages 로 접속해주세요.
-    2. 읽고 싶은 Post를 선택해서 읽고, 댓글 을 달아주세요.
+    2. 회원가입을 해주세요. 글을 읽을 수 있고, 작성할 수 있습니다.
+    3. 읽고 싶은 Post를 선택해서 읽고, 댓글 을 달아주세요.
 
 * 서비스 URL 정보
     * 실행 URL: https://mkdirlife.github.io/TalesFromThePages
