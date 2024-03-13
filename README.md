@@ -101,6 +101,16 @@ graph LR
 
 * 폴더 구조
 ```
+    | 폴더명    | 역할    |
+    |-----------|--------|------|------|------|
+    | acount    | 계정    | 전역 스타일 설정 |
+    | blog      | 블로그  | | | 블로그 컨텐츠 스타일 설정 |
+    | config    | config.js | | siteConfig | 사이트 설정 정보 |
+    | media     | URLparsing.js | extractFromUrl() | url(url obj), pathParts(쿼리스트링), isLocal | URL 파싱, 스키마 확인 |
+    | static    | render.js | renderBlogPosts(), renderMenu() | | 데이터를 DOM에 렌더링 |
+    | templates | initData.js | initDataBlogList(), initDataBlogMenu() | blogList, blogMenu | 초기 데이터 로딩, 스키마 확인 |
+    |           | db.sqlite3 | renderBlogPosts(), renderMenu() | | 데이터를 DOM에 렌더링 |
+    |           | manage.py | initDataBlogList(), initDataBlogMenu() | blogList, blogMenu | 초기 데이터 로딩, 스키마 확인 |
 ```
 
 * 에러와 에러 해결(트러블슈팅 히스토리)
