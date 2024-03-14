@@ -131,8 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-#LOGIN_URL = BASE_DIR / 'templates' / 'blog' / 'blog_list.html'
-
 # 패키지 설치하면 자동으로 된다고 했으나 tinyMCE 사이트와 블로그에서 찾아서 
 # 이것저것 했는데도 경로가 제대로 인식이 안되서 수동으로 base.html에 추가함.
 #TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
