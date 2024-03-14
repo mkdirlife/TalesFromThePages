@@ -74,11 +74,6 @@ class BlogDetailView(LoginRequiredMixin, DetailView):
         return context
     
     def get_object(self, queryset=None):
-        '''
-        말 그대로 PostDetailView.as_view()에서 사용할 object를 반환합니다.
-        반환 하는데 object를 변경할 수 있는 함수입니다.
-        여기서 원하는 쿼리셋이나 object를 추가한 후 템플릿으로 전달할 수 있습니다.
-        '''
         pk = self.kwargs.get('pk')
         print(self.kwargs)
         post = get_object_or_404(Blog, pk=pk)
@@ -112,7 +107,6 @@ blog_delete = BlogDeleteView.as_view()
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
-    #template_name = 'blog/blog.html'  # 댓글 입력 폼을 보여줄 템플릿
 
     def get_success_url(self):
         return reverse_lazy('blog:blog_detail', kwargs={'pk': self.object.post.pk})
@@ -127,8 +121,6 @@ class CommentDeleteView(LoginRequiredMixin, UpdateView):
     model = Comment
     fields = []  # 뷰에서 업데이트할 필드가 없으므로 비워둡니다.
     template_name = 'blog/comment_delete.html'
-    # template_name = 'blog/comment_confirm_delete.html' # 필요한 경우 사용
-    # success_url을 동적으로 생성하기 위해 get_success_url 메서드를 사용합니다.
 
     def form_valid(self, form):
         """
