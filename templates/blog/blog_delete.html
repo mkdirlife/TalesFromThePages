@@ -2,6 +2,7 @@
 
 <form method="post">
     {% csrf_token %}
-    <p>글을 삭제하시겠습니까?</p>
-    <input type="submit" value="네!" class="btn btn-primary">
+    <p>정말로 "{{ object.title }}" 글을 삭제하시겠습니까?</p>
+    <input type="submit" value="삭제" class="btn btn-danger">
+    <a href="{% url 'blog:blog_detail' object.pk %}" class="btn btn-secondary">취소</a>
 </form>
