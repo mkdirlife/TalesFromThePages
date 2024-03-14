@@ -100,6 +100,29 @@ graph LR
         </tr>
     </table>
 
+* URL 구조
+```
+| URL 패턴                        | 뷰 이름                | 설명                                               
+|--------------------------------|----------------------|----------------------------------------------                  
+| /admin/                        | -                    | Django 관리자 페이지                                  
+| /blog/                         | blog:blog_list       | 블로그 목록                                
+| /blog/new/                     | blog:blog_create     | 새로운 블로그 게시물 작성                       
+| /blog/<int:pk>/                | blog:blog_detail     | 블로그 게시물 상세                             
+| /blog/<int:pk>/update/         | blog:blog_update     | 블로그 게시물 수정                              
+| /blog/<int:pk>/delete/         | blog:blog_delete     | 블로그 게시물 삭제                             
+| /blog/tag/<str:tag>/           | blog:blog_tag        | 특정 태그를 가진 블로그 게시물 목록                      
+| /blog/category/<str:category>/ | blog:blog_category   | 특정 카테고리에 속한 블로그 게시물 목록                       
+| /blog/author/<str:username>/   | blog:blog_author     | 특정 작성자의 블로그 게시물 목록                       
+| /blog/<int:pk>/comment_create/ | blog:comment_create  | 블로그 게시물에 댓글 작성 기능                             
+| /blog/<int:pk>/comment_delete/ | blog:comment_delete  | 블로그 게시물의 댓글 삭제 기능                        
+| /accounts/signup/              | accounts:user_signup | 사용자 회원가입                                   
+| /accounts/login/               | accounts:user_login  | 사용자 로그인                                       
+| /accounts/logout/              | accounts:user_logout | 사용자 로그아웃 기능                                       
+| /accounts/profile/             | accounts:profile     | 사용자 프로필                                      
+| /tinymce/                      | -                    | TinyMCE 에디터 관련 URL (서드 파티 라이브러리)                   
+```
+
+
 * 폴더 구조
 ```
 django_blog/
