@@ -46,8 +46,8 @@ class Comment(models.Model):
         if self.is_deleted:
             return "삭제되었습니다."
         else:
-            # HTML 등을 제거하고 50자만 표시하도록 수정.
-            return strip_tags(self.message)[:50]
+            # HTML 등을 제거
+            return strip_tags(self.message)
     
     
 class Tag(models.Model):
