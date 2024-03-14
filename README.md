@@ -119,7 +119,7 @@ django_blog/
 │   ├── __init__.py
 │   ├── admin.py                     관리자 페이지에서 모델을 등록하고 관리
 │   ├── apps.py
-│   ├── forms.py                     블로그 관련 form class 정의, PostForm(블로그글 작성, 수정), CommentForm(댓글 작성), TagForm(태그작성), CategoryForm(카테고리 생성)
+│   ├── forms.py                     블로그 관련 form class 정의, 블로그글 작성, 수정, 댓글 작성, 태그작성, 카테고리 생성
 │   ├── models.py                    Blog, Comment, Tag, Category 데이터 구조 정의
 │   ├── tests.py
 │   ├── urls.py                      view class 와 URL 패턴을 매핑
