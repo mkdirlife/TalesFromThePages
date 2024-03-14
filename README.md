@@ -168,5 +168,5 @@ django_blog/
             * 위치, 사이즈 변경 시 어울리지 않는 문제
 
 * 참고
-   1. tinyMCE 사용방법 블로그 참고 - (https://www.sanlab.me/blog/django/django-tinymce)
+   1. tinyMCE django 사용방법 참고 - (https://www.tiny.cloud/docs/tinymce/latest/django-zip/)
 
