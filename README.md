@@ -103,40 +103,56 @@ graph LR
 ```
 django_blog/
 │
-├── account/   사용자 인증, 회원가입, 로그인 사용자 계정 관련 기능
+├── account/                     사용자 인증, 회원가입, 로그인 사용자 계정 관련 기능
 │   ├── migrations/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
-│   ├── models.py
+│   ├── forms.py                     사용자 프로필을 업데이트 사진, 소개 메시지, email 필드를 통해 업데이트 기능
+│   ├── models.py                    UserProfile class 만들어서 User 모델의 기본필드 유지하고, 추가적인 프로필 정보 정의
 │   ├── tests.py
-│   └── views.py
+│   ├── urls.py                      view class 와 URL 패턴을 매핑
+│   └── views.py                     계정관련 view class / 로그인, 로그아웃, 회원가입, 프로필 수정 등의 기능을 처리
 │
-├── blog/      글작성, 삭제, 댓글작성, 삭제 등 블로그 기능 
+├── blog/                        글작성, 삭제, 댓글작성, 삭제 등 블로그 기능 
 │   ├── migrations/
 │   ├── __init__.py
-│   ├── admin.py
+│   ├── admin.py                     관리자 페이지에서 모델을 등록하고 관리
 │   ├── apps.py
-│   ├── models.py
+│   ├── forms.py                     블로그 관련 form class 정의, PostForm(블로그글 작성, 수정), CommentForm(댓글 작성), TagForm(태그작성), CategoryForm(카테고리 생성)
+│   ├── models.py                    Blog, Comment, Tag, Category 데이터 구조 정의
 │   ├── tests.py
-│   └── views.py
+│   ├── urls.py                      view class 와 URL 패턴을 매핑
+│   └── views.py                     블로그 글 목록, 상세 페이지, 글 작성, 수정, 삭제 등의 기능을 처리
 │
-├── config/   Django 프로젝트의 설정 파일 폴더
+├── config/                     Django 프로젝트의 설정 파일 폴더
 │   ├── __init__.py
 │   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
+│   ├── settings.py                  프로젝트 설정 파일
+│   ├── urls.py                      프로젝트 URL 정의 파일
 │   └── wsgi.py
 │
-├── media/   사용자 업로드 미디어 파일 저장 폴더
+├── media/                     사용자 업로드 미디어 파일 저장 폴더
 │
-├── static/   CSS, JavaScript 등 정적 파일 저장 폴더
+├── static/                    CSS, JavaScript 등 정적 파일 저장 폴더
 │
-├── templates/   HTML 템플릿 파일 폴더
+├── templates/                 HTML 템플릿 파일 폴더
+│   ├── accounts/
+│   │   ├── form.html                회원가입 폼
+│   │   ├── profile.html             프로필 템플릿
+│   │   ├── user_login.html          로그인 템플릿
+│   |   └── user_signup.html         회원가입 템플릿
+│   ├── blog/
+│   │   ├── _comment.html            댓글 작성자의 프로필 사진 표시, 댓글 표시
+│   │   ├── blog_delete.html         블로그글 삭제
+│   │   ├── blog_detail.html         블로그글 선택시 보여지는 템플릿
+│   │   ├── blog_list.html           블로그글 리스트 템플릿(메인페이지)
+│   │   ├── comment_delete.html      댓글 삭제
+│   |   └── form.html                블로그 글 작성 폼
+│   └── base.html               여러 html에 사용할 header, footer 포함한 기본 템플릿
+├── db.sqlite3        Django의 기본 데이터베이스 파일
 │
-├── db.sqlite3   Django의 기본 데이터베이스 파일
-│
-└── manage.py   Django 프로젝트를 관리
+└── manage.py         Django 프로젝트를 관리
 ```
 
 * 에러와 에러 해결(트러블슈팅 히스토리)
