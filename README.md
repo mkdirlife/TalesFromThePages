@@ -24,7 +24,7 @@ Tales From The Pages 책 소개 블로그
 * WBS
 ```mermaid
 gantt
-    title TalesFromThePages 도서추천 블로그
+    title TalesFromThePages 도서소개 블로그
     dateFormat  YYYY-MM-DD
     section 계획
     프로젝트 범위 정의        :    des1, 2024-03-07, 1d
